@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-BTAI6loBVUNitYYlJAJ2w2+F+jhnFLHZDr/rx1T45f8='">
+
+    <title>Parking Entry</title>
+</head>
+
+<body>
+    <h2>New Parking Entry</h2>
+    <form id="parkingEntryForm">
+        <label for="plateNumber">Vehicle No</label>
+        <input type="text" id="plateNumber" required><br>
+
+        <label for="category">Category</label>
+        <select id="category" required>
+            <option value="Light Motor Four wheeler">Light Motor Four wheeler</option>
+            <option value="Two Wheeler">Two Wheeler</option>
+            <option value="Three Wheeler">Three Wheeler</option>
+            <option value="Heavy Vehicle Four Wheeler">Heavy Vehicle Four Wheeler</option>
+        </select><br>
+
+        <label for="rateCode">Rate Code</label>
+        <select id="rateCode" required>
+            <option value="BK901">BK901</option>
+            <option value="CY902">CY902</option>
+            <option value="CR101">CR101</option>
+            <option value="CR102">CR102</option>
+            <option value="VN102">VN102</option>
+            <option value="BS102">BS102</option>
+            <option value="LR102">LR102</option>
+        </select><br>
+        <div class="col-md-6 col-lg-6">
+            <label for="rate">Rate</label>
+            <input type="text" value="15" readonly class="form-control" id="rate">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <label for="checkinTime">Checkin Time</label>
+                    <input type="datetime-local" class="form-control" id="checkinTime">
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <label for="checkoutTime">Checkout Time</label>
+                    <input type="datetime-local" class="form-control" id="checkoutTime">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <label for="totalHours">Total Hours</label>
+                    <input type="number" class="form-control" id="totalHours" required>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <label for="totalAmount">Total Amount</label>
+                    <input type="number" class="form-control" id="totalAmount" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <label for="paidStatus">Paid Status</label>
+                    <select class="form-control" id="paidStatus">
+                        <option>Paid</option>
+                        <option>Not Paid</option>
+                        <option>In Progress</option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <label for="paymentMode">Payment Mode</label>
+                    <select class="form-control" id="paymentMode">
+                        <option>Cash</option>
+                        <option>Card</option>
+                        <option>UPI</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="script.js"></script>
+
+    <!-- <script>
+        document.getElementById('parkingEntryForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const plateNumber = document.getElementById('plateNumber').value;
+            const category = document.getElementById('category').value;
+            const rateCode = document.getElementById('rateCode').value;
+            const rate = document.getElementById('rate').value;
+            const checkinTime = document.getElementById('checkinTime').value;
+            const checkoutTime = document.getElementById('checkoutTime').value;
+            const totalHours = document.getElementById('totalHours').value;
+            const totalAmount = document.getElementById('totalAmount').value;
+            const paidStatus = document.getElementById('paidStatus').value;
+            const paymentMode = document.getElementById('paymentMode').value;
+
+
+            // Construct the data object
+            const data = {
+                plateNumber: plateNumber,
+                category: category,
+                rateCode: rateCode,
+                rate: rate,
+                checkinTime: checkinTime,
+                checkoutTime: checkoutTime,
+                totalHours: totalHours,
+                totalAmount: totalAmount,
+                paidStatus: paidStatus,
+                paymentMode: paymentMode,
+                // Add other fields here
+            };
+
+            // Make a POST request using the Fetch API
+            fetch('http://localhost:3000/api/vehicles/parkingEntries', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    // Handle success response here
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                 
+                });
+        });
+    </script> -->
+</body>
+
+</html>
